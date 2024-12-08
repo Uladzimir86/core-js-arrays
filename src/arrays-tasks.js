@@ -500,8 +500,15 @@ function findCommonElements(arr1, arr2) {
  *    findLongestIncreasingSubsequence([3, 10, 2, 1, 20]) => 2
  *    findLongestIncreasingSubsequence([50, 3, 10, 7, 40, 80]) => 3
  */
-function findLongestIncreasingSubsequence(/* nums */) {
-  throw new Error('Not implemented');
+function findLongestIncreasingSubsequence(nums) {
+  let longest = 0;
+  let count = 0;
+  const reduce = nums.reduce((res, item, ind, arr) => {
+    count = res;
+    longest = longest < count ? count : longest;
+    return ind !== 0 && item > arr[ind - 1] ? res + 1 : 1;
+  }, 1);
+  return longest > reduce ? longest : reduce;
 }
 
 /**
@@ -518,8 +525,10 @@ function findLongestIncreasingSubsequence(/* nums */) {
  *  propagateItemsByPositionIndex([ 'a', 'b', 'c', null ]) => [ 'a', 'b', 'b', 'c', 'c', 'c',  null, null, null, null ]
  *  propagateItemsByPositionIndex([ 1,2,3,4,5 ]) => [ 1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 5 ]
  */
-function propagateItemsByPositionIndex(/* arr */) {
-  throw new Error('Not implemented');
+function propagateItemsByPositionIndex(arr) {
+  return arr.length
+    ? arr.map((item, ind) => Array(ind + 1).fill(item)).flat(1)
+    : arr;
 }
 
 /**
@@ -535,8 +544,9 @@ function propagateItemsByPositionIndex(/* arr */) {
  *    shiftArray(['a', 'b', 'c', 'd'], -1) => ['b', 'c', 'd', 'a']
  *    shiftArray([10, 20, 30, 40, 50], -3) => [40, 50, 10, 20, 30]
  */
-function shiftArray(/* arr, n */) {
-  throw new Error('Not implemented');
+function shiftArray(arr, n) {
+  const arrayPart = n > 0 ? arr.splice(0, arr.length - n) : arr.splice(0, -n);
+  return [...arr, ...arrayPart];
 }
 
 /**
