@@ -563,7 +563,6 @@ function shiftArray(arr, n) {
  *   sortDigitNamesByNumericOrder([ 'one','one','one','zero' ]) => [ 'zero','one','one','one' ]
  */
 function sortDigitNamesByNumericOrder(arr) {
-  console.log('arr: ', arr);
   const numbers = [
     'zero',
     'one',
